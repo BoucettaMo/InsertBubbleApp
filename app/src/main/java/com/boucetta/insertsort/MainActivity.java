@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -75,7 +76,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 listButtons.get(0).setTextColor(getResources().getColor(R.color.green));
-                if (countInsert<=24) {
+                if (listButtons.get(0).getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(),"Please choose",Toast.LENGTH_LONG).show();
+                }
+                else if (countInsert<=24) {
                     progressBar.setProgress(countInsert);
                     listButtons.get(countInsert).setTextColor(getResources().getColor(R.color.green));
                     int key = Integer.parseInt(listButtons.get(countInsert).getText().toString());
@@ -96,7 +100,10 @@ public class MainActivity extends AppCompatActivity {
         bubble.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (countBubble<=24) {
+                if (listButtons.get(0).getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(),"Please choose",Toast.LENGTH_LONG).show();
+                }
+                else if (countBubble<=24) {
                     progressBar.setProgress(countBubble);
                     listButtons.get(countBubble).setTextColor(getResources().getColor(R.color.green));
                     for (int j=24;j>=countBubble + 1;j--) {
